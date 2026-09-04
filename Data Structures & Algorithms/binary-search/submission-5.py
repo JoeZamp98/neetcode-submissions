@@ -1,0 +1,31 @@
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        
+        l_bound = 0
+        r_bound = len(nums)
+
+        while r_bound >= l_bound:
+
+            midpoint = l_bound + ((r_bound - l_bound) // 2)
+            print(f"{r_bound} | {l_bound} | {midpoint}")
+
+            if r_bound == l_bound:
+                if nums[l_bound] == target:
+                    return r_bound
+                else: 
+                    return -1
+
+            if nums[midpoint] == target:
+
+                return midpoint
+
+            if target < nums[midpoint]:
+
+                r_bound = midpoint - 1
+
+            if target > nums[midpoint]:
+
+                l_bound = midpoint + 1
+
+        return -1
+            
